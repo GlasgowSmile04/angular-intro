@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   title: String = 'Hello World';
   name: String = 'Zac';
   currentDay: any = new Date().getDay();
@@ -52,6 +52,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log('Hello moto');
+  }
+
+  ngOnDestroy() {
+    console.log('Goodbye cruel world');
   }
 
 }
