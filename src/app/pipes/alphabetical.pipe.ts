@@ -5,13 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AlphabeticalPipe implements PipeTransform {
 
-  transform(array: any, args?: any): any[] {
-    if (!array) {
-      return array;
-    }
+  transform(array: any, filterBy: string): any[] {
+    if (!array) { return array; }
+    if (!filterBy ) {return array; }
     array.sort((a, b) => {
-      a = a.name.toLowerCase();
-      b = b.name.toLowerCase();
+    if ( (typeof a[filterBy] || typeof b[filterBy]) === 'string') {
+      a = a[filterBy].toLowerCase();
+      b = b[filterBy].toLowerCase();
+    } else {
+      a = a[filterBy];
+      b = b[filterBy];
+    }
 
       if ( a < b ) {
         return -1;
