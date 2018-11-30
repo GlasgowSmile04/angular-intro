@@ -6,12 +6,22 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
+import { ContactComponent } from './contact/contact.component';
+import { AlphabeticalPipe } from './pipes/alphabetical.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TodoComponent
+    TodoComponent,
+    ContactComponent,
+    AlphabeticalPipe,
+    ReversePipe,
+    HeroesComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,
