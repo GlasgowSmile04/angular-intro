@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute } from '@angular/router';
 
 import { HeroInterface } from '../interfaces/hero-interface';
 import { HeroService } from '../services/hero.service';
@@ -11,16 +12,30 @@ import { HeroService } from '../services/hero.service';
 export class HeroesComponent implements OnInit {
 
   heroes: HeroInterface[];
-  filter = 'all';
+  filter: string;
+  hasFilter: boolean;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private route: ActivatedRoute) { }
 
-  getHeroes(filter: string) { this.heroes = this.heroService.getHeroes(filter); }
+  getHeroes(filter?: string) {
+    return this.route.params.subscribe(params => {
+      if ( params.power ) {
+        this.hasFilter = true;
+        this.filter = params.power;
+        const power: string = this.filter;
+        this.heroes = this.heroService.getHeroes(power);
+      } else {
+        this.hasFilter = false;
+        this.filter = filter;
+        this.heroes = this.heroService.getHeroes(filter);
+      }
+    });
+   }
 
   updateFilter(filter: string) { this.filter = filter; this.getHeroes(this.filter); }
 
   filterIsActive(filter: string): boolean { return this.filter === filter; }
 
-  ngOnInit() { this.getHeroes('all'); }
+  ngOnInit() { this.getHeroes(); }
 
 }
