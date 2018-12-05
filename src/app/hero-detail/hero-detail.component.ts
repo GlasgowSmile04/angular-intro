@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { HeroInterface } from '../interfaces/hero-interface';
 import { HeroService } from '../services/hero.service';
-import { HEROES } from '../mocks/mock-heroes';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hero-detail',
@@ -15,7 +13,7 @@ export class HeroDetailComponent implements OnInit {
 
   hero: HeroInterface;
 
-  constructor(private heroService: HeroService, private route: ActivatedRoute) {
+  constructor( private heroService: HeroService, private route: ActivatedRoute) {
 
   }
 
