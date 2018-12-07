@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 
 import { HeroInterface } from '../interfaces/hero-interface';
@@ -9,7 +9,7 @@ import { HeroService } from '../services/hero.service';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, OnDestroy {
 
   heroes: HeroInterface[];
   filter: string;
@@ -36,5 +36,7 @@ export class HeroesComponent implements OnInit {
   filterIsActive(filter: string): boolean { return this.filter === filter; }
 
   ngOnInit() { this.getHeroes(); }
+
+  ngOnDestroy() { this.getHeroes().unsubscribe(); }
 
 }

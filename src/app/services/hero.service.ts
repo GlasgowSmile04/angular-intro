@@ -25,11 +25,14 @@ export class HeroService {
     return hero;
   }
 
-  getIndividualHero(params: object){
-    return HEROES.find(hero => hero.id === +params['id']);
+  getIndividualHero(params: object): HeroInterface {
+    const id: number = +params['id'];
+    const selectedHero: HeroInterface = HEROES.find(hero => hero.id === id );
+    if ( !selectedHero ) { this.heroNotFound(id); }
+    return selectedHero;
   }
 
-  heroNotFound( noHero: string ) {
+  heroNotFound( noHero: string | number ) {
     return this.router.navigateByUrl(`/hero-not-found/${noHero}`);
   }
 
