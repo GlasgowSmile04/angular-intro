@@ -1,1 +1,39 @@
-<p *ngFor="let amiibo of amiibos">{{ amiibo.name }}</p>
+<div class="container">
+  <div class="col-md-offset-9">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+  </div>
+  <div class="row">
+    <h1 class="text-center">Amiibos</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let amiibo of pagedItems | search: searchText">
+      <div class="amiibo-body">
+        <h3 class="text-center">{{ amiibo.name }}</h3>
+        <hr>
+        <p class="text-center">{{ amiibo.gameSeries }}</p>
+        <div class="text-center">
+          <button class="btn btn-info" [routerLink]="['/amiibo/', amiibo.tail]">View</button>
+        </div>
+      </div>
+    </div>
+    <ng-container>
+      <ul class="pagination" *ngIf="paginator.pages && paginator.pages.length">
+        <li [ngClass]="{'disabled' : paginator.currentPage === 1}">
+          <a (click)="setPage(1)">First Page</a>
+        </li>
+        <li [ngClass]="{'disabled' : paginator.currentPage === 1}">
+          <a (click)="setPage(paginator.currentPage - 1)">Back</a>
+        </li>
+        <li *ngFor="let page of paginator.pages" [ngClass]="{'active' : paginator.currentPage == page }">
+          <a (click)="setPage(page)">{{ page }}</a>
+        </li>
+        <li [ngClass]="{'disabled' : paginator.currentPage === paginator.pagesCount}">
+          <a (click)="setPage(paginator.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{'disabled' : paginator.currentPage === paginator.pagesCount}">
+          <a (click)="setPage(paginator.pagesCount)">Last Page</a>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</div>

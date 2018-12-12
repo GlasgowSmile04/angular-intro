@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HeroNotFoundComponent } from './hero-not-found/hero-not-found.component';
 import { AmiibosComponent } from './amiibos/amiibos.component';
 import { AmiiboDetailComponent } from './amiibo-detail/amiibo-detail.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AmiiboDetailComponent } from './amiibo-detail/amiibo-detail.component';
     NotFoundComponent,
     HeroNotFoundComponent,
     AmiibosComponent,
-    AmiiboDetailComponent
+    AmiiboDetailComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
