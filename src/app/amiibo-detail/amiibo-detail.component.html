@@ -1,3 +1,30 @@
-<p>
-  amiibo-detail works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="img-container">
+        <img src="{{ amiibo?.image }}" alt="{{ amiibo?.name }}">
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1 class="text-center">{{ amiibo?.name }}</h1>
+      <ul class="list-group">
+        <li class="list-group-item" *ngIf="amiibo">Amiibo Series - <a [routerLink]="['/amiibos/', 'amiiboSeries', amiibo?.amiiboSeries]">{{ amiibo?.amiiboSeries }}</a></li>
+        <li class="list-group-item" *ngIf="!amiibo">Amiibo Series - <a [routerLink]="">{{ amiibo?.amiiboSeries }}</a></li>
+        <li class="list-group-item" *ngIf="amiibo">Game Series - <a [routerLink]="['/amiibos/', 'gameseries', amiibo?.gameSeries]">{{ amiibo?.gameSeries }}</a></li>
+        <li class="list-group-item" *ngIf="!amiibo">Game Series - <a [routerLink]="">{{ amiibo?.gameSeries }}</a></li>
+        <li class="list-group-item" >Type - {{ amiibo?.type }}</li>
+      </ul>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Releases</h3>
+        </div>
+        <ul>
+          <li>Australia(AU) - {{ amiibo?.release.au | date: "longDate" }}</li>
+          <li>Europe(EU) - {{ amiibo?.release.eu | date: "longDate" }}</li>
+          <li>Japan(JP) - {{ amiibo?.release.jp | date: "longDate" }}</li>
+          <li>North America(NA) - {{ amiibo?.release.na | date: "longDate" }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

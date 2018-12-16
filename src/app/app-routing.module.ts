@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'hero-not-found/:no-hero', component: HeroNotFoundComponent},
   { path: 'amiibos', component: AmiibosComponent },
   { path: 'amiibo/:id', component: AmiiboDetailComponent },
-  { path: 'amiibos/:catagpry/:value', component: AmiibosComponent },
+  { path: 'amiibos/:category/:value', component: AmiibosComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

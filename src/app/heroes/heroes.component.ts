@@ -31,9 +31,9 @@ export class HeroesComponent implements OnInit, OnDestroy {
     });
    }
 
-  updateFilter(filter: string) { this.filter = filter; this.getHeroes(this.filter); }
+  updateFilter(filter?: string) { this.filter = filter; this.getHeroes(this.filter); }
 
-  filterIsActive(filter: string): boolean { return this.filter === filter; }
+  filterIsActive(filter?: string): boolean { return this.filter === filter; }
 
   ngOnInit() { this.getHeroes(); }
 
