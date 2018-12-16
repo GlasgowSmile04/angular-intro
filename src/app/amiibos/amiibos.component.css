@@ -1,0 +1,7 @@
+.amiibo-body {
+  background-color: lightgray;
+  padding: 10px;
+  margin: 10px 0;
+  min-height: 200px;
+  border-radius: 5px;
+}

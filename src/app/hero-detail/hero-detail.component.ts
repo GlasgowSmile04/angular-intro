@@ -1,21 +1,19 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { HeroInterface } from '../interfaces/hero-interface';
 import { HeroService } from '../services/hero.service';
-import { HEROES } from '../mocks/mock-heroes';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailComponent implements OnInit, OnDestroy {
 
   hero: HeroInterface;
 
-  constructor(private heroService: HeroService, private route: ActivatedRoute) {
+  constructor( private heroService: HeroService, private route: ActivatedRoute) {
 
   }
 
@@ -29,5 +27,7 @@ export class HeroDetailComponent implements OnInit {
     this.getHero();
 
   }
+
+  ngOnDestroy() { this.getHero().unsubscribe(); }
 
 }
